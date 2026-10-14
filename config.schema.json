@@ -1,0 +1,20 @@
+{
+  "pluginAlias": "HomebridgeReolinkPrivacy",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Controls the camera's native Privacy Mode over its local Baichuan service (TCP port 9000).",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": { "title": "Platform name", "type": "string", "default": "Reolink Privacy" },
+      "host": { "title": "Camera IP / host", "type": "string", "default": "192.168.178.74" },
+      "port": { "title": "Baichuan TCP port", "type": "integer", "default": 9000 },
+      "username": { "title": "Camera username", "type": "string", "default": "admin" },
+      "password": { "title": "Camera password", "type": "string", "format": "password" },
+      "cameraName": { "title": "HomeKit switch name", "type": "string", "default": "Reolink Privacy Mode" },
+      "pollIntervalSeconds": { "title": "Status refresh interval", "type": "integer", "default": 30, "minimum": 10, "maximum": 300 },
+      "pythonPath": { "title": "Python 3.11+ executable", "type": "string", "default": "python3" }
+    },
+    "required": ["host", "username", "password"]
+  }
+}

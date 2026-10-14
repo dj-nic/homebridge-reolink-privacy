@@ -1,0 +1,11 @@
+{
+  "platform": "ReolinkPrivacy",
+  "name": "Reolink Privacy",
+  "host": "192.168.178.74",
+  "port": 9000,
+  "username": "admin",
+  "password": "SET_CAMERA_PASSWORD_HERE",
+  "cameraName": "Reolink E1 Privacy Mode",
+  "pollIntervalSeconds": 30,
+  "pythonPath": "python3"
+}

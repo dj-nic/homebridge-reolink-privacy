@@ -1,0 +1,20 @@
+{
+  "name": "homebridge-reolink-privacy",
+  "version": "0.1.0",
+  "description": "Homebridge switch for native Reolink Privacy Mode over Baichuan",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "bridge", "requirements.txt", "README.md", "config.schema.json"],
+  "engines": { "node": ">=18", "homebridge": ">=1.8.0" },
+  "keywords": ["homebridge-plugin", "reolink", "privacy-mode"],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "homebridge": "^1.8.5",
+    "typescript": "^5.8.3"
+  }
+}
