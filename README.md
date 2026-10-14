@@ -19,7 +19,21 @@ For Windows, use `py -3.11 -m pip install -r requirements.txt`, then set `python
 
 ## Install the plugin
 
-From this project directory:
+For a one-line install, run the command for your Homebridge host. The host must have Git configured to access this private GitHub repository. On Linux/Raspberry Pi, run it as the Homebridge service user and with permission to install global npm packages:
+
+```sh
+python3 -m pip install --user reolink-aio==0.21.17 && npm install -g git+https://github.com/dj-nic/homebridge-reolink-privacy.git
+```
+
+On Windows CMD, open an elevated command prompt, ensure that account can access the private repository over HTTPS, and run:
+
+```bat
+py -3.11 -m pip install reolink-aio==0.21.17 && npm install -g git+https://github.com/dj-nic/homebridge-reolink-privacy.git
+```
+
+On Windows, set `pythonPath` in the platform configuration to the full path of the Python 3.11 `python.exe` used by `py -3.11`.
+
+To install from a local checkout instead, run these commands from the project directory:
 
 ```sh
 npm install
