@@ -9,7 +9,7 @@ A single HomeKit switch for the Reolink camera's native Privacy Mode. Communicat
 - Camera account with administrator permissions
 - Camera reachable on the local network at TCP port 9000
 
-Install the Python dependency in the same Python environment visible to the Homebridge service:
+For a manual installation, install the Python dependency into the same Python environment used by the Homebridge service:
 
 ```sh
 python3 -m pip install -r requirements.txt
@@ -19,13 +19,17 @@ For Windows, use `py -3.11 -m pip install -r requirements.txt`, then set `python
 
 ## Install the plugin
 
-For a one-line install, run the command for your Homebridge host. The host must have Git configured to access this private GitHub repository. On Linux/Raspberry Pi, run it as the Homebridge service user and with permission to install global npm packages:
+### Linux (Debian, Ubuntu, Raspberry Pi OS)
+
+Open a terminal on the Homebridge host and run this one command. It installs the plugin into Homebridge's plugin directory, creates a private Python environment for the bridge dependency, and restarts Homebridge:
 
 ```sh
-python3 -m pip install --user reolink-aio==0.21.17 && npm install -g git+https://github.com/dj-nic/homebridge-reolink-privacy.git
+sudo hb-service add https://github.com/dj-nic/homebridge-reolink-privacy.git && sudo -u homebridge python3 -m venv /var/lib/homebridge/reolink-privacy-venv && sudo -u homebridge /var/lib/homebridge/reolink-privacy-venv/bin/python -m pip install -r /var/lib/homebridge/node_modules/homebridge-reolink-privacy/requirements.txt && sudo hb-service restart
 ```
 
-On Windows CMD, open an elevated command prompt, ensure that account can access the private repository over HTTPS, and run:
+This command is for the standard Homebridge service installation, which uses `/var/lib/homebridge` and the `homebridge` service account. Python 3.11+ and the `python3-venv` package must be available. After installation, the plugin appears under **Plugins → Installed** in Homebridge UI. In the plugin configuration, set **Python 3.11+ executable** to `/var/lib/homebridge/reolink-privacy-venv/bin/python`, then enter the camera IP, username, and password and save. The switch accessory is published after the platform is configured and Homebridge restarts.
+
+On Windows CMD, open an elevated command prompt and run:
 
 ```bat
 py -3.11 -m pip install reolink-aio==0.21.17 && npm install -g git+https://github.com/dj-nic/homebridge-reolink-privacy.git
